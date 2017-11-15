@@ -4,8 +4,8 @@ class Product < ApplicationRecord
     #validates :price, presense: true
     #validates :stock_quantity, presense: true
     
-    has_many :line_items
-    has_many :orders, :through => :line_items
+    #has_many :line_items
+    #has_many :orders, :through => :line_items
 
     
 end

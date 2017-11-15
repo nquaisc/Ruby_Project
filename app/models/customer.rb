@@ -9,4 +9,9 @@ class Customer < ApplicationRecord
     #validates :address, presense: true
     #validates :postal_code, presense: true
     #
+    
+    def name
+        first_name + " " + last_name
+    end
+    
 end
