@@ -1,25 +1,7 @@
 <h1>Products</h1>
 
-<table>
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Price</th>
-           <th>Stock Quantity</th>
-           <th colspan="3"></th>
-        </tr>
-    </thead>
-    
-    <tbody>
-        <% @products.each do |product| %>
-            <tr>
-                <td><%= product.name %></td>
-                <td><%= product.description %></td>
-                <td><%= product.price %></td>
-                <td><%= product.stock_quantity %></td>
-                <td><%= link_to 'Show', product_show_path%></td>
-            </tr>
-        <% end %>
-    </tbody>
-</table>
+
+
+<%= render partial: 'product',
+collection: @products,
+locals: {display_product_link: true} %>

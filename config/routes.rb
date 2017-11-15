@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   
   get '/' => 'product#index' , as: 'index'
+  
+  get '/product/:id', to: 'product#show', as: 'product_id', number: /\d+/
 end
