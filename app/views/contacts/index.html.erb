@@ -1,2 +1,7 @@
-<h1>Contacts#index</h1>
-<p>Find me in app/views/contacts/index.html.erb</p>
+<% @Contact.each do |ct|  %>
+
+<h1><%=ct.title %></h1>
+<p><%=ct.message %></p>
+
+
+<% end %>
