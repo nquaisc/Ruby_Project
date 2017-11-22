@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'contacts/index'
+
   get 'abouts/index'
 
   get 'product/index'
