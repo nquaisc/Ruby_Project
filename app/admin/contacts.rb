@@ -12,4 +12,6 @@ ActiveAdmin.register Contact do
 #   permitted
 # end
 
+permit_params :title, :message, :email, :phone, :address, :postal, :city, :province
+
 end
