@@ -5,5 +5,8 @@ class Product < ApplicationRecord
     validates :stock_quantity, presence: true
     belongs_to :category
 
+    def self.search(keyword)
+        where("name LIKE ?", "%#{keyword}%")
+    end
     
 end
