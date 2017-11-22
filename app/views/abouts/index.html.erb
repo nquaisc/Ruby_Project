@@ -1,4 +1,6 @@
-<h1>About Us</h1>
+<% @About.each do |ab|  %>
 
+<h1><%=ab.title %></h1>
+<p><%=ab.message %></p>
 
-<p>Find me in app/views/abouts/index.html.erb</p>
+<% end %>
