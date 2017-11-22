@@ -20,5 +20,7 @@ Rails.application.routes.draw do
   
   get '/ContactUs' => 'contacts#index' , as: 'contacts'
   
+  get '/Category' => 'categories#index' , as: 'categories'
+  
   get '/product/:id', to: 'product#show', as: 'product_id', number: /\d+/
 end
