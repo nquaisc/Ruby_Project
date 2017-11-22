@@ -1,13 +1,11 @@
 <div>
-    <p>Product Information:
-    
     <% if display_product_link %>
         <%= link_to product.name, product_id_path(product) %>
     <% else %>
-        <p><%= product.name %></p>
-        <p><%= product.description %></p>
-        <p><%= product.price %></p>
-        <p><%= product.stock_quantity %></p>
+        <p><strong>Item:</strong> <%= product.name %></p>
+        <p><strong>Description:</strong> <%= product.description %></p>
+        <p><strong>Item price:</strong> <%= product.price %></p>
+        <p><strong>Item quantity:</strong> <%= product.stock_quantity %></p>
     <% end %>
-    </p>
+    
 </div>
