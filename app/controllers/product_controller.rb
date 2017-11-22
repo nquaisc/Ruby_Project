@@ -3,11 +3,19 @@ class ProductController < ApplicationController
   def index
     @products = Product.all
     
+    
+    if params[:keyword]
+      @products = Product.search(params[:keyword]).order("name ASC")
+    
+    end
+    
   end
 
   def show
     @products = Product.find(params[:id])
   end
+  
+  
   
   
   
