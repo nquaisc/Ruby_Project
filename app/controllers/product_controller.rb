@@ -1,11 +1,10 @@
 class ProductController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   def index
-    @products = Product.all
-    
+    @products = Product.all.page(params[:page]).per(5)
     
     if params[:keyword]
-      @products = Product.search(params[:keyword]).order("name ASC")
+      @products = Product.search(params[:keyword]).order("name ASC").page(params[:page]).per(5)
     
     end
     
