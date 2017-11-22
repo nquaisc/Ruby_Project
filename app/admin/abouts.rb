@@ -12,4 +12,6 @@ ActiveAdmin.register About do
 #   permitted
 # end
 
+permit_params :title, :message
+
 end
