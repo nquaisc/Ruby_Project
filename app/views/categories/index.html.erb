@@ -9,6 +9,12 @@
 
     <% @categories.each do |cats|%>
         <h3><%=cats.name%></h3>
+        <% @product.where("category_id = #{cats.id}").each do |prod| %>
+            <p><strong>Item:</strong> <%= prod.name %></p>
+            <p><strong>Description:</strong> <%= prod.description %></p>
+            <p><strong>Item price:</strong> <%= prod.price %></p>
+            <p><strong>Item quantity:</strong> <%= prod.stock_quantity %></p>
+        <% end %>
         
     <% end %>
 
