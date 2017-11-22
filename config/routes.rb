@@ -12,5 +12,7 @@ Rails.application.routes.draw do
   
   get '/' => 'product#index' , as: 'index'
   
+  get '/AboutUs' => 'abouts#index' , as: 'abouts'
+  
   get '/product/:id', to: 'product#show', as: 'product_id', number: /\d+/
 end
