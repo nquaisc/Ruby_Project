@@ -1,5 +1,5 @@
 class Province < ApplicationRecord
     
-    permit_params
+    permit_params :name, :gst, :pst, :hst
     
 end
