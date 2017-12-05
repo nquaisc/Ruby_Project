@@ -72,16 +72,7 @@ ActiveRecord::Schema.define(version: 20171205163421) do
 # Could not dump table "customers" because of following StandardError
 #   Unknown type 'reference' for column 'prov_id'
 
-  create_table "line_items", force: :cascade do |t|
-    t.integer "product_id"
-    t.integer "order_id"
-    t.integer "quantity"
-    t.decimal "price"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["order_id"], name: "index_lineitems_on_order_id"
-    t.index ["product_id"], name: "index_lineitems_on_product_id"
-  end
+
 
   create_table "orders", force: :cascade do |t|
     t.integer "customer_id"
