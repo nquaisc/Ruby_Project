@@ -53,4 +53,8 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
   
   config.reload_classes_only_on_change = false
+  
+  
+  Paperclip.options[:command_path] = "/usr/local/bin/"
+  
 end

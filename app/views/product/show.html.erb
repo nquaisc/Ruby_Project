@@ -3,3 +3,5 @@
 <%= render partial: 'product',
 object: @products,
 locals: {display_product_link: false} %>
+
+<%= link_to "Add to Cart", cart_path, :method => "add_cart" %>

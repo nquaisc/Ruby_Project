@@ -1,0 +1,13 @@
+<h1>Your Cart!</h1>
+
+<% if session[:cart].nil? %>
+    <p>You have nothing in your cart, bro.</p>
+<% else %>
+    <% session[:cart].each do |cartstuff| %>
+        <% @products.where("id = #{cartstuff}").each do |prod| %>
+          <p> <%=prod.name %></p>
+        <% end %>
+    <% end %>
+<% end %>
+
+<%= link_to "Checkout", pay_path %>

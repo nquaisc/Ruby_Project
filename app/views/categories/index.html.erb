@@ -3,21 +3,24 @@
  <%= form_tag categories_path, :method => "get" do %>
    <%= text_field_tag :keyword %>
    <%= submit_tag 'Search' %>
- <% end %> 
 
+
+ <%= form_for @cat do |f| %>
+
+  <%= f.collection_select(:id, @categories, :name, :name) %> 
 
 
     <% @categories.each do |cats|%>
-        <h3><%=cats.name%></h3>
+        <h2><%=cats.name%></h2>
         <% @product.where("category_id = #{cats.id}").each do |prod| %>
-            <p><strong>Item:</strong> <%= prod.name %></p>
-            <p><strong>Description:</strong> <%= prod.description %></p>
-            <p><strong>Item price:</strong> <%= prod.price %></p>
-            <p><strong>Item quantity:</strong> <%= prod.stock_quantity %></p>
+            <h4><%= prod.name %></h4>
+            <p><strong>Description:</strong> <%= prod.description %> <strong>Item price:</strong> <%= prod.price %> <strong>Item quantity:</strong> <%= prod.stock_quantity %></p>
+            
+        
         <% end %>
         
     <% end %>
 
-
-
+  <% end %>
+ <% end %> 
 

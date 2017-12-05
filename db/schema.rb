@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171122174654) do
+ActiveRecord::Schema.define(version: 20171205163421) do
 
   create_table "abouts", force: :cascade do |t|
     t.string "title"
@@ -69,18 +69,8 @@ ActiveRecord::Schema.define(version: 20171122174654) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "customers", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "address"
-    t.string "postal_code"
-    t.string "city"
-    t.string "province"
-    t.string "country"
-    t.string "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+# Could not dump table "customers" because of following StandardError
+#   Unknown type 'reference' for column 'prov_id'
 
   create_table "line_items", force: :cascade do |t|
     t.integer "product_id"
@@ -102,15 +92,16 @@ ActiveRecord::Schema.define(version: 20171122174654) do
     t.index ["customer_id"], name: "index_orders_on_customer_id"
   end
 
-  create_table "products", force: :cascade do |t|
+# Could not dump table "products" because of following StandardError
+#   Unknown type 'reference' for column 'prov_id'
+
+  create_table "provinces", force: :cascade do |t|
     t.string "name"
-    t.string "description"
-    t.decimal "price"
-    t.integer "stock_quantity"
+    t.decimal "gst"
+    t.decimal "pst"
+    t.decimal "hst"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "category_id", null: false
-    t.index ["category_id"], name: "index_products_on_category_id"
   end
 
 end

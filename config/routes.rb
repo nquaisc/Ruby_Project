@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'checkout/index'
+
+  get 'shopping_cart/index'
+
   get 'categories/index'
 
   get 'contacts/index'
@@ -23,4 +27,12 @@ Rails.application.routes.draw do
   get '/Category' => 'categories#index' , as: 'categories'
   
   get '/product/:id', to: 'product#show', as: 'product_id', number: /\d+/
+  
+  post '/product/:id' => 'product#add_cart', as: :cart
+  
+  post '/invoice' => 'checkout#invoice' , as: 'invoice'
+  
+  get '/cart' => 'shopping_cart#index' , as: 'shoppingcart'
+  
+  get '/checkout' => 'checkout#index' , as: 'pay'
 end

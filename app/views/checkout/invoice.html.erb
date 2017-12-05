@@ -1,0 +1,46 @@
+<% getProv = Province.where("name LIKE '%#{params[:prov]}%'").first
+
+  @gst = getProv.gst
+  @pst = getProv.pst
+  @hst = getProv.hst
+  @subtotal = 0
+
+@cust = Customer.new("first_name" => "#{params[:fname]}",
+                     "last_name" => "#{params[:lname]}",
+                     "address" => "#{params[:address]}",
+                     "postal_code" => "#{params[:postal]}",
+                     "city" => "#{params[:city]}",
+                     "province" => "#{params[:prov]}",
+                     "country" => "#{params[:country]}",
+                     "email" => "#{params[:email]}",
+                     "prov_id" => getProv.id).save
+%>
+                     
+<h1>Invoice for <%= params[:fname] %> <%=params[:lname] %></h1>
+
+<p>Address: <%=params[:address]%> <%=params[:city]%> <%=params[:prov]%> <%= params[:country] %></p>
+
+<p></p>
+
+
+<% session[:cart].each do |cartstuff| %>
+        <% @products.where("id = #{cartstuff}").each do |prod| %>
+          <p> <%=prod.name %> ............ 1 x <%=prod.price%></p>
+          <% @subtotal = @subtotal + prod.price%>
+        <% end %>
+    <% end %>
+    
+    <% @taxes = ((@subtotal * @gst)+(@subtotal * @pst)+(@subtotal * @hst))
+       @grandTotal = @subtotal + @taxes%>
+    
+    <p>GST: ...... <%=@gst%> <br />PST: ...... <%=@pst%> <br />HST: ...... <%=@hst%> <br /></p>
+    <p>Subtotal:   <%=number_to_currency(@subtotal)%> <br />Taxes:      <%=number_to_currency(@taxes) %> <br />Total:      <%=number_to_currency(@grandTotal)%></p>
+    
+<% @currentCust = Customer.order("created_at").last
+
+@oder = Order.new("customer_id" => @currentCust.id,
+                  "status" => "Ordered",
+                  "total_amount" => @grandTotal).save%>
+    
+
+
